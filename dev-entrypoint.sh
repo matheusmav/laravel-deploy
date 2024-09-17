@@ -9,10 +9,10 @@ npm install
 
 npm run build
 
-php artisan migrate
+# php artisan migrate
 
-php artisan optimize:clear
-php artisan optimize
+# php artisan optimize:clear
+# php artisan optimize
 
 # Iniciar o servidor Octane com FrankenPHP
 exec php artisan octane:frankenphp
