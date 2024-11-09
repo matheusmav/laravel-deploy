@@ -14,5 +14,16 @@ php artisan migrate
 php artisan optimize:clear
 php artisan optimize
 
-# Iniciar o servidor Octane com FrankenPHP
-exec php artisan octane:frankenphp
+# Iniciar o servidor Octane com FrankenPHP primeiro
+exec php artisan octane:frankenphp &
+
+# Esperar um tempo para o Octane inicializar (se necessário, ajuste o tempo)
+sleep 5
+
+# Iniciar o Supervisor
+if ! pgrep supervisord > /dev/null; then
+    supervisord
+fi
+supervisorctl reread
+supervisorctl update
+supervisorctl start "laravel-worker:*"
