@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     libzip-dev \
     unzip \
+    php-intl \
+    php-zip \
     && install-php-extensions \
     pcntl \
     pdo_pgsql \
