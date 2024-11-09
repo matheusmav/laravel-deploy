@@ -1,6 +1,7 @@
 FROM dunglas/frankenphp
  
 RUN apt-get update && apt-get install -y \
+    supervisor \
     libzip-dev \
     unzip \
     && install-php-extensions \
