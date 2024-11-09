@@ -4,13 +4,12 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     libzip-dev \
     unzip \
-    php-intl \
-    php-zip \
     && install-php-extensions \
     pcntl \
     pdo_pgsql \
     pdo_mysql \
     opcache \
+    intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
  
 COPY . /app
