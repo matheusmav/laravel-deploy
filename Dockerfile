@@ -15,6 +15,8 @@ COPY . /app
 
 WORKDIR /app
 
+COPY ./laravel-worker.conf /etc/supervisor/conf.d
+
 # Instalando o composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
