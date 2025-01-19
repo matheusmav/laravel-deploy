@@ -9,21 +9,22 @@ npm install
 
 npm run build
 
-php artisan migrate
+php artisan migrate --force
 
 php artisan optimize:clear
 php artisan optimize
 
-# Iniciar o servidor Octane com FrankenPHP primeiro
-exec php artisan octane:frankenphp &
-
-# Esperar um tempo para o Octane inicializar (se necessário, ajuste o tempo)
-sleep 5
+# Iniciar o cron
+cron
 
 # Iniciar o Supervisor
-if ! pgrep supervisord > /dev/null; then
-    supervisord
+if ! supervisorctl status > /dev/null 2>&1; then
+    supervisord -c /etc/supervisor/supervisord.conf
 fi
+
 supervisorctl reread
 supervisorctl update
 supervisorctl start "laravel-worker:*"
+
+# Iniciar o Octane como o último processo
+exec php artisan octane:frankenphp

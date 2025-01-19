@@ -1,10 +1,10 @@
 services:
-  app-frankenphp:
+  app-frankenphp: # Altere esse nome para o nome do seu projeto
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     env_file:
       - .env
-    entrypoint: ./prod-entrypoint.sh
+    entrypoint: ./entrypoint.sh
     # ports:
     #   - "8000:8000"
