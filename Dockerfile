@@ -19,10 +19,10 @@ COPY . /app
 
 WORKDIR /app
 
-RUN chmod +x ./entrypoint.sh
+RUN chmod +x ./docker/entrypoint.sh
 
 # Copiar arquivo de configuração para o supervisor
-COPY ./laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
+COPY ./docker/laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
 
 # Criar diretório para logs do supervisor que foi definido no laravel-worker.conf
 RUN mkdir -p /app/supervisor
