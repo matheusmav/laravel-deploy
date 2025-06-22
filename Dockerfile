@@ -12,11 +12,14 @@ RUN apt-get update && apt-get install -y \
     opcache \
     intl \
     zip \
+    redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
  
 COPY . /app
 
 WORKDIR /app
+
+RUN chmod +x ./entrypoint.sh
 
 # Copiar arquivo de configuração para o supervisor
 COPY ./laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
